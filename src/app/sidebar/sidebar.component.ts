@@ -1,20 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { SidebarProps } from './sidebar.types';
 
 @Component({
   selector: 'app-sidebar',
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  showSection(sectionId: string) {
-    // Oculta todas las secciones
-    document.querySelectorAll('.container').forEach(container => {
-      (container as HTMLElement).classList.add('hidden');
-    });
-    // Muestra la sección seleccionada
-    const sectionToShow = document.getElementById(sectionId);
-    if (sectionToShow) {
-      sectionToShow.classList.remove('hidden');
+
+  @Input() routerLinkActive!: string | string[];
+
+  public routes: SidebarProps[] = [
+    {
+      title: 'Inicio',
+      route: '/inicio'
+    },
+    {
+      title: 'Operarios',
+      route: '/inicio/operarios'
+    },
+    {
+      title: 'produccion',
+      route: '/inicio/produccion'
     }
-  }
+  ]
 }

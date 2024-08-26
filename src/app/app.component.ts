@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule], // Importa CommonModule para funcionalidades básicas de Angular
+  imports: [CommonModule, RouterOutlet], // Importa CommonModule para funcionalidades básicas de Angular
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
